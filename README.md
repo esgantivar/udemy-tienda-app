@@ -1,1 +1,14 @@
-### :point_right: This starter repo has moved to the [ionic-team/starters](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/blank) repo! :point_left:
+# Tienda App
+
+[Link backend](https://github.com/esgantivar/udemy-tienda-api-ionic3)
+
+Dentro del directorio de la aplicación
+
+Instalar paquetes
+```
+$ npm install
+```
+Correr Aplicación
+```
+$ ionic serve --no-browser
+```
