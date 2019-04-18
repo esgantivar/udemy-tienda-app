@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{category?.linea}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of ps.filtered">
+      <ion-thumbnail item-left>
+        <img [src]="item.imagen">
+      </ion-thumbnail>
+      <h2>{{item.producto}}</h2>
+      <p>{{item.proveedor}}</p>
+      <button ion-button clear item-right [navPush]="producto" [navParams]="{product: item}">
+        Ver
+      </button>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="load($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

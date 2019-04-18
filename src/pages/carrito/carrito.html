@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="viewCtrl.dismiss()">
+        Cerrar
+      </button>
+    </ion-buttons>
+    <ion-title>Carrito de Compras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center class="carrito-vacio" *ngIf="carrito.empty">
+    <ion-icon class="icon-5x" name="ios-cart-outline"></ion-icon>
+    <br>
+    Su carrito esta vacio
+  </div>
+
+  <ion-grid>
+    <ion-row *ngFor="let item of carrito.items">
+      <ion-col>
+        <img [src]="item.imagen">
+      </ion-col>
+      <ion-col>
+        <p>{{item.producto}}</p>
+        <p>{{item.precio_compra|currency: 'USD':true}}</p>
+        <button ion-button small outline color="danger" (click)="carrito.removeItem(item)">Eliminar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="!carrito.empty">
+    <hr>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3>
+            <strong>Total: </strong> {{carrito?.total|currency: 'USD':true}}
+          </h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button block [disabled]="carrito.empty" (click)="createOrder()"> Realizar Pedido</button>
+  </div>
+</ion-content>

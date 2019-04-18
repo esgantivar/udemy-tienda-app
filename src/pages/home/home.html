@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons *ngIf="auth">
+      <button ion-button (click)="logout()">
+        Salir
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Tienda
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="danger" *ngIf="count>0" class="carrito-numero">{{count}}</ion-badge>
+      </button>
+      &nbsp;
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of productosProvider.products" (click)="showDetail(item)">
+        <img [src]="item.imagen">
+        <p>
+          {{item.producto}}
+          <br>
+          {{item.precio_compra | currency: 'USD':true}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll (ionInfinite)="load($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

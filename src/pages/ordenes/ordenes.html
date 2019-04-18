@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mis Pedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of carrito.orders" [navPush]="detail" [navParams]="{orden: item}">
+      <strong>Order ID: </strong> {{item.id}}
+    </button>
+  </ion-list>
+</ion-content>
